@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charet="utf-8">
+		<title>jsレッスン</title>
+	</head>
+	<body>
+		<h1>BMI計算</h1>
+		体重:<input type="number" id="weight"><br>
+		身長:<input type="number" id="height"><br>
+		<button id="bt" onclick="execute()">計算</button>
+		<p id="result"></p>
+<script>
+	const weight=document.getElementById("weight");
+	const height=document.getElementById("height");
+	const result=document.getElementById("result");
+	const execute=()=>{
+			let weightKg=parseFloat(weight.value);
+			let heightCm=parseFloat(height.value);
+			let bmi=weightKg/(heightCm/100 * heightCm/100);
+			result.textContent=`あなたのBMIは${bmi.toFixed(1)}です`;
+	}
+</script>
+	</body>
+</html>

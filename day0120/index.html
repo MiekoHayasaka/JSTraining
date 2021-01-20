@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>とほほレッスン</title>
+	</head>
+	<body>
+<script>
+
+var a = 3;
+let b = 3;
+{
+  var a = 5;
+  let b = 5;
+}
+console.log(a);    // 5 (ブロック内で上書きされてしまう)
+console.log(b);    // 3 (ブロック内で上書きされない)
+
+//for (variable in array) statements
+xx = [ "Blue", "Red", "Yellow" ];
+for (i in xx) {
+  console.log(xx[i]);
+}
+
+//for (variable of iterable) statements
+//Map や Set をはじめとして、イテラブルなオブジェクトに対するループを実現します。
+var set = new Set();
+set.add("Tanaka");
+set.add("Suzuki");
+for (var value of set) {
+  console.log(value);
+}
+
+//無名関数 →　function (引数) { /* 処理内容 */ }
+
+// 関数を変数に入れて実行
+// コンソールに「'Hello world!'」と表示される
+let showMessage = function (msg) {
+  console.log(msg)
+}
+showMessage('Hello world!')
+
+// 引数に関数を渡す
+// 1秒後にコンソールに「1秒経ったよ！」と表示される
+setTimeout(function () {
+    console.log('1秒経ったよ！')
+}, 1000)
+
+//ラムダ式 → (引数) => { /* 処理内容 */ }
+//引数が1つの場合のみ、ラムダ式の引数の()を省略することができます。
+
+// 無名関数ver
+function (num) {
+  return num * 2
+}
+
+// ラムダ式ver
+(num) => {
+  return num * 2
+}
+
+</script>
+	</body>
+</html>

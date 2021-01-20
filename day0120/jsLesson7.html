@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>jsレッスン</title>
+	</head>
+	<body>
+		<h1>今日の運勢</h1>
+		<button onclick="btCheck()">占う</button>
+	 <div id="result"></div>
+<script>
+	const result=document.getElementById('result');
+	const btCheck=()=>{
+			let str1='今日のあなたの運勢は';
+			let str2='';
+			let n=Math.floor(Math.random()*4);
+			switch(n){
+					case 0:
+						str2=str1+'大吉です！';
+						break;
+					case 1:
+						str2=str1+'中吉です';
+						break;
+					case 2:
+						str2=str1+'小吉です';
+						break;
+					default:
+						str2=str1+'凶です';
+						break;
+				}
+			result.textContent=str2;
+	};
+</script>
+	</body>
+</html>
+

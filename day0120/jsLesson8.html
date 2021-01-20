@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>jsレッスン</title>
+	</head>
+	<body>
+		体重：<input type="number" id="weight" placeholder=""><br>
+		身長：<input type="number" id="height" placeholder=""><br>
+		<button onclick="btCheck()">計算</button><br>
+		<div id="result"></div>
+<script>
+	const btCheck=()=>{
+			let weight=document.getElementById("weight").value;
+			let height=document.getElementById("weight").value / 100.0;
+			let bmi=weight / height / height;
+			let str="あなたのbmiは"+bmi.toFixed(1)+"です。";
+			document.getElementById("result").textContent=str;
+		};
+
+</script>
+	</body>
+</html>
+

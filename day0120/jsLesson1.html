@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>jsレッスン</title>
+	</head>
+	<body>
+		<div id="result"></div>
+		<p>Hello</p>
+		<p>World</p>
+<script>
+	let x=10; //letはブロックスコープ{}の変数
+	let y=20;
+	let z=x+y;
+	let str="x+y="+z;
+	console.log(str);
+	let a=1.0;
+	a="Hello";
+	console.log(a);
+	var b=2.0; //varはファンクションスコープの変数
+	console.log(b);
+	console.log(window);
+	console.log(document);
+	const ele=document.getElementById("result"); //constは定数
+	ele.textContent=str;
+	console.log(ele);
+	console.dir(ele);
+	//window.alert("Hello JS!");
+	let ans=window.confirm("JSは楽しいですか？");
+	console.log(ans);
+	ans=window.prompt("好きな言葉は?");
+	ele.textContent=ans;
+	let arr=[22,10,44];
+	console.log(arr[0]);
+
+	for(let i=0;i<arr.length;i++){
+			console.log(arr[i]);
+		}
+
+	for(let n of arr){
+			console.log(n);
+		}
+	let pelements = document.getElementsByTagName("p");
+	for(let i=0;i<pelements.length;i++){
+			console.log(pelements[i].textContent);
+		}
+
+	let hoge=document.getElementsByTagName("span");
+	console.log(hoge);
+	let mixArr=["hoge",20,0.1];
+	for(let val of mixArr){
+			console.log(val);
+		}
+
+	const obj1={"name":"John","age":22};
+	console.log(obj1);
+	console.log(obj1.name);
+	console.log(obj1.age);
+	obj1.gender="man";
+	console.log(obj1);
+	let func1=function(){console.log("ドーナツ")};
+	func1();
+	let func2=function(arg){console.log(arg*2)};
+	func2(5);
+	function maxOf(x,y){
+			return x > y ? x:y;
+	}
+	console.log(maxOf(10,30));
+	let func3=maxOf;
+	ans=func3(100,200);
+	console.log(ans);
+
+	//Lambda式（ラムダ式)
+	const func4=()=>{console.log("double-arrow");};
+	func4();
+
+	const func5=(x,y)=>{console.log(x+y);};
+	func5(10,50);
+
+	const func6=x=>{console.log(x*2);};
+	func6(10);
+
+	const func7=x=>console.log(x*3);
+	func7(20);
+
+</script>
+	</body>
+</html>
