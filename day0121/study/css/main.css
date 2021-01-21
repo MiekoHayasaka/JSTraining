@@ -1,0 +1,11 @@
+.hide{
+  display: inline-block;
+  padding:2px;
+  color:#aaaaaa;
+  background: #aaaaaa;
+  font-size:16px;
+}
+.hide:hover{
+  cursor:pointer;
+}
+

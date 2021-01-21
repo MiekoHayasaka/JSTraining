@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>jsレッスン</title>
+	</head>
+	<body>
+		<p id="word" >Hello</p>
+<script>
+	console.log(window);
+	//window.alert('hello JS!');
+	console.log(document);
+	//document.getElementById("word").textContent="World";
+	const ele=document.getElementById("word");
+	let modify=()=>{
+			ele.style.backgroundColor='blue';
+	}
+	let modify2=()=>{
+			ele.style.width='600px';
+			ele.style.height='400px';
+		}
+	let modify3=()=>{
+			ele.style.opacity='0.5';
+		}
+	let modify4=()=>{
+			ele.style.opacity='1';
+		}
+	ele.addEventListener('click',modify);
+	ele.addEventListener('click',modify2);
+	ele.addEventListener('mouseover',modify3);
+	ele.addEventListener('mouseout',modify4);
+	console.dir(ele);
+	ele.style.color='red';
+	ele.style.width='200px';
+	ele.style.height='150px';
+	ele.style.textAlign='center';
+	ele.style.lineHeight='150px';
+	ele.style.backgroundColor='yellow';
+
+	function sayHello(){
+			console.log('Hello');
+	}
+	sayHello();
+
+	function calc(x,y){
+			console.log(x+y);
+	}
+	calc(10,20);
+	calc('Hello','World');
+
+	function calc2(x,y){
+			return x*y;
+	}
+	let n=calc2(5,8);
+	console.log(n);
+	let func=calc;
+	func(1000,2000);
+
+	let calc3=(x,y)=>{console.log(x%y);};
+	calc3(10,3);
+	
+	let calc4=()=>{console.log('Hello');};
+	calc4();
+
+</script>
+	</body>
+</html>
+
