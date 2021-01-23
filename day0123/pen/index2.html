@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jsLesson</title>
+	</head>
+	<body>
+		<button class="select" data-color="red">赤を持つ</button>
+		<button class="select" data-color="green">緑を持つ</button>
+		<button class="select" data-color="blue">青を持つ</button>
+		<button onclick="writePen()">書く</button>
+		<p id="info"></p>
+		<div id="penStatus"></div>
+<script>
+	const bts=document.querySelectorAll('.select');
+	const info=document.getElementById('info');
+	const penStatus=document.getElementById('penStatus');
+	class ColorPen{
+			constructor(color,length,colorCode){
+					this.color=color;
+					this.length=length;
+					this.colorCode=colorCode;
+				}
+			write(){
+					let msg='';
+					if(this.length <=0){
+							msg='もう書けません';
+					}else{
+							this.length-=0.5;
+							msg=this.color+'で書いた。残りの長さ'+this.length;
+					}
+					return msg;
+			}
+	}
+	let pens=[
+			new ColorPen('赤',10,'red'),
+			new ColorPen('緑',10,'green'),
+			new ColorPen('青',10,'blue')
+	];
+	let pen=null;
+	for(let i=0;i<bts.length;i++){
+			bts[i].addEventListener('click',()=>{
+					pen=pens[i];
+					info.textContent=pen.color+'を持った';
+					showPen();
+		});
+	}
+	const writePen=(eve)=>{
+			let msg='';
+			if(pen == null){
+					msg='ペンを持ってください!';
+			}else{
+					msg=pen.write();
+			}
+			info.textContent=msg;
+			showPen();
+		};
+	function showPen(){
+					penStatus.textContent=pen.length+'cm';
+					penStatus.style.width=pen.length+'cm';
+					penStatus.style.backgroundColor=pen.colorCode;
+					penStatus.style.color='yellow';
+	}
+</script>
+	</body>
+</html>

@@ -28,11 +28,17 @@
 			for(let i=0;i<=9;i++){
 					let tr=document.createElement('tr');
 					for(let j=0;j<=9;j++){
-							if(i==0){
-							}
 							let td=document.createElement('td');
+							if(i==0 && j==0){
+								td.textContent="X";
+							tr.appendChild(td);
+							}else if(i==0){
+							td.textContent= ++i;
+							tr.appendChild(td);
+							}else {							
 							td.textContent=i*j;
 							tr.appendChild(td);
+}
 					}
 					table.appendChild(tr);
 			}
