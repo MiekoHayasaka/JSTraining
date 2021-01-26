@@ -1,0 +1,23 @@
+#container{
+  width:650px;
+  margin:0 auto;
+}
+.image{
+  overflow: hidden;
+  position: relative;
+}
+.image strong{
+  position:absolute;
+  display: block;
+  z-index:1;
+  bottom:2px;
+  width:630px;
+  height:30px;
+  background:rgba(0,0,0,0.5);
+  text-align:left;
+  padding:10px ;
+  line-height:30px;
+  opacity: 0;
+  color:white;
+	left:-200%;
+}

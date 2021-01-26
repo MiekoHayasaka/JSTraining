@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>塗り絵カレンダー</title>
+		<link rel="stylesheet" href="css/main.css"/>
+	</head>
+	<body>
+		<canvas id="coloring" width="400" height="300"></canvas>
+		<div id="palette">カラーパレット<br></div>
+<script>
+	// キャンバスを取得
+	let canvas = document.getElementById('coloring');
+	// コンテキストを取得
+	let ctx = canvas.getContext('2d');
+	// カラーパレット取得
+	var palette = document.getElementById('palette');
+
+	// マウス位置
+	var mouse = {x:0, y:0};
+	// クリック中フラグ
+	var isClicked = false;
+	// ペン色
+	var penColor = "#000000";
+
+	// マウスイベントを取得
+	// マウスクリック
+	canvas.addEventListener("mousedown", function(e){
+		drarLineStart();
+
+		// クリック中フラグ
+		isClicked = true;
+	});
+
+	// 実行
+	setColorPalette()
+
+
+	// マウス移動
+	canvas.addEventListener("mousemove", function(e){
+		// キャンバスの位置とサイズを取得
+		var rect = e.target.getBoundingClientRect();
+
+		// マウスの位置
+		mouse.x = e.clientX - rect.left;
+		mouse.y = e.clientY - rect.top;
+		// クリック中なら線を引く
+		if(isClicked) {
+			drawLine();
+		}
+	});
+
+	// マウスクリック解除
+	canvas.addEventListener("mouseup", function(e){
+		// クリック終了
+		isClicked = false;
+	});
+
+	// 開始位置を指定
+	function drarLineStart() {
+		// 線の太さを指定
+		ctx.lineWidth = 9;
+		// 線の色を指定
+		ctx.strokeStyle = penColor;
+		ctx.globalAlpha = 0.1;
+		// 今からパスを書きますよと云う宣言
+		ctx.beginPath();
+		// 先端を丸くする
+		ctx.lineCap = "round"
+		// パスの開始点に移動
+		ctx.moveTo(mouse.x, mouse.y);
+	}
+
+	// 線を引く
+	function drawLine() {
+		// 指定の位置までパスを引く
+		ctx.lineTo(mouse.x, mouse.y);
+		// パスに線を載せる
+		ctx.stroke();
+	}
+
+	// パレットを配置する
+	function setColorPalette() {
+		var colors = ['#FFFFFF', '#000000', '#663300', '#339933', '#00FF99', '#00FFFF',
+				 '#0000FF', '#9900FF', '#FFFF00', '#FF9900', '#FF99FF', '#FF0000'];
+
+		for(var i = 0; i < 12; i++) {
+			var btn = "<button class='Color' style='background-color: " + colors[i] + ";' onClick='setPenColor(\"" + colors[i] + "\");'></button>"
+			palette.innerHTML += btn;
+		}
+	}
+
+	// 色を変更する
+	function setPenColor(setColor) {
+		// var setColor = '#FF0000';
+		console.log("setPenColor" + setColor);
+		penColor = setColor;
+	}
+
+</script>
+</html>
