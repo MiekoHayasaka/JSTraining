@@ -21,3 +21,20 @@
   color:white;
 	left:-200%;
 }
+#menus{
+
+  position:relative;
+  list-style-type:none;
+}
+
+#menus li{
+  position:absolute;
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:#3999dd;
+  color:white;
+  line-height: 100px;
+  font-size:20px;
+  text-align: center;
+}

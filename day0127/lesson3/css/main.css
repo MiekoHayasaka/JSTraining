@@ -1,0 +1,11 @@
+.slideshow{
+	overflow:hidden;
+	position:relative;
+	width:960px;
+	height:415px;
+	margin:0 auto;
+}
+.slideshow img{
+	display:none;
+	position:absolute;
+}

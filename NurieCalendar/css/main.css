@@ -1,13 +1,29 @@
-		/* h1のCSS */
 		h1 {
 			margin-left: 50px;
 			color: #cccccc;
+font-size: 18px;
 		}
 
 		/* キャンバスのCSS */
-		#coloring {
+#canvas {
 			border: solid 1px #cccccc;
 			margin: 0px 50px;
+			width: 400px;
+			height: 300px;
+			position: relative;
+		}
+#coloring {
+			top: 0px;
+			left: 0px;
+			position: absolute;
+			z-index: 1;
+		}
+		/* 上に重ねる画像 */
+		#overImage {
+			top: 0px;
+			left: 0px;
+			position: absolute;
+			z-index: 2;
 		}
 
 		/* カラーパレットのCSS */
@@ -24,3 +40,66 @@
 			height: 30px;
 			border: solid 1px #CCCCCC;
 		}
+
+		/* ペンサイズ */
+		#penWidth {
+			margin: 50px;
+			padding: 0px;
+			float: left;
+		}
+
+		#penWidth button {
+			border: none;
+			background-color: #FFFFFF;
+			width: 30px;
+			height: 30px;
+			padding: 0px;
+		}
+		.penSize {
+			border-radius: 50%;
+			background-color: #000000;
+			border: solid 1px #CCCCCC;
+			margin: auto;
+		}
+
+		#penSizeL {
+			width: 20px;
+			height: 20px;
+		}
+
+		#penSizeM {
+			width: 10px;
+			height: 10px;
+		}
+
+		#penSizeS {
+			width: 5px;
+			height: 5px;
+		}
+
+		/* ペン濃度 */
+		#penAlpha {
+			margin: 50px;
+			padding: 0px;
+			float: left;
+		}
+
+/*カレンダーのCSS */
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+}
+
+td:first-child {
+    color: red;
+}
+
+td:last-child {
+    color: royalblue;
+}
