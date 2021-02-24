@@ -1,75 +1,74 @@
 
-//現在の年月を取得
+// 現在の年月を取得
 let today = new Date();
-let currentMonth = today.getMonth(); // 0(1月)～11(12月)
+let currentMonth = today.getMonth();
 let currentYear = today.getFullYear();
 
-//指定の年月を取得
+// 	指定の年月を取得
 let selectYear = document.getElementById("year");
 let selectMonth = document.getElementById("month");
 
-//見出しを取得
-let title = document.getElementById("title");
-
-//日付指定プルダウンメニュー(年)を作成
+//日付指定メニューを作成
 let createYear = generate_year_range(2000, 2050);
 function generate_year_range(start, end) {
   let years = "";
-  for (let i=start; i<= end; i++) {
-      years += "<option value='" + i + "'>" + i + "</option>";
+  for (var year = start; year <= end; year++) {
+      years += "<option value='" + year + "'>" + year + "</option>";
   }
   return years;
 }
+
 document.getElementById("year").innerHTML = createYear;
 
 let calendar = document.getElementById("calendar");
+let lang = calendar.getAttribute('data-lang');
+
 const months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
 const days = ["日", "月", "火", "水", "木", "金", "土"];
 
-//テーブルに曜日を設定
 let dayHeader = "<tr>";
 for (let day in days) {
   dayHeader += "<th data-days='" + days[day] + "'>" + days[day] + "</th>";
 }
 dayHeader += "</tr>";
+
 document.getElementById("thead-month").innerHTML = dayHeader;
 
-//現在の年月でカレンダー表示
-showCalendar(currentYear,currentMonth);
+monthAndYear = document.getElementById("monthAndYear");
+showCalendar(currentMonth, currentYear);
 
 //翌月へ移動
 function next() {
   currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
   currentMonth = (currentMonth + 1) % 12;
-  showCalendar(currentYear,currentMonth);
+  showCalendar(currentMonth, currentYear);
 }
 //前月へ移動
 function previous() {
   currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
   currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
-  showCalendar(currentYear,currentMonth);
+  showCalendar(currentMonth, currentYear);
 }
-//選択された年月へ移動
+//セレクトされた年月へ移動
 function jump() {
   currentYear = parseInt(selectYear.value);
   currentMonth = parseInt(selectMonth.value);
-  showCalendar(currentYear,currentMonth);
+  showCalendar(currentMonth, currentYear);
 }
 
-//指定した年月のカレンダーを生成
-function showCalendar(year,month) {
-  let firstDay = (new Date(year, month)).getDay();　//月の初日
+function showCalendar(month, year) {
+  let firstDay = ( new Date( year, month ) ).getDay();　//月の初日
 	let lastDay = 32 - new Date(year, month, 32).getDate();　//月の最終日
 //console.log(lastDay); 
 
   tbl = document.getElementById("calendar-body");
   tbl.innerHTML = "";
-	//見出しを表示
-	title.innerHTML = year + "年 " + months[month];
+	//年月を表示
+	monthAndYear.innerHTML = year + "年 " + months[month];
   selectYear.value = year;
   selectMonth.value = month;
 
-  //テーブル作成
+  //指定した年月のカレンダーを生成
   let date = 1;
   for ( let i = 0; i < 6; i++ ) {
       var row = document.createElement("tr");

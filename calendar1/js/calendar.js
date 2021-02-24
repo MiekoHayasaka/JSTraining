@@ -9,7 +9,7 @@ let selectYear = document.getElementById("year");
 let selectMonth = document.getElementById("month");
 
 //見出しを取得
-let title = document.getElementById("title");
+let cTitle = document.getElementById("cTitle");
 
 //日付指定プルダウンメニュー(年)を作成
 let createYear = generate_year_range(2000, 2050);
@@ -58,28 +58,30 @@ function jump() {
 
 //指定した年月のカレンダーを生成
 function showCalendar(year,month) {
-  let firstDay = (new Date(year, month)).getDay();　//月の初日
-	let lastDay = 32 - new Date(year, month, 32).getDate();　//月の最終日
+  let firstDay = (new Date(year, month)).getDay();　//1日は何曜日か(0～6)
+	let lastDate = 32 - new Date(year, month, 32).getDate();　//月の末日
+  let lastDay = (new Date(year, month,lastDate)).getDay();　//末日は何曜日か 
 //console.log(lastDay); 
 
   tbl = document.getElementById("calendar-body");
   tbl.innerHTML = "";
 	//見出しを表示
-	title.innerHTML = year + "年 " + months[month];
+	cTitle.innerHTML = year + "年 " + months[month];
   selectYear.value = year;
   selectMonth.value = month;
 
   //テーブル作成
   let date = 1;
-  for ( let i = 0; i < 6; i++ ) {
+  for (let i=0; i<6; i++) {
       var row = document.createElement("tr");
-      for ( let j = 0; j < 7; j++ ) {
-          if ( i===0 && j<firstDay || i>=4 && j>lastDay) {
+      for (let j=0; j<7; j++) {
+//          if ( i===0 && j<firstDay || j>lastDay) {
+          if ( i===0 && j<firstDay) {
               cell = document.createElement( "td" );
               cellText = document.createTextNode("");
               cell.appendChild(cellText);
               row.appendChild(cell);
-        	} else if (date > lastDay) {
+        	} else if (date > lastDate) {
 							//月の最終日を超えたらブレイク
               break;
           } else {
